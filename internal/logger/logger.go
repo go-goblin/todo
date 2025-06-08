@@ -11,7 +11,6 @@ import (
 
 var logger *Logger
 
-// Logger является оберткой над logrus.Logger и содержит дополнительное поле "component".
 type Logger struct {
 	Logrus *logrus.Logger
 }
