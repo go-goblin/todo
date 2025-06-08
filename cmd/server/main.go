@@ -6,6 +6,7 @@ import (
 	"github.com/joho/godotenv"
 	"github.com/sirupsen/logrus"
 	"net/http"
+	"os"
 	"os/signal"
 	"syscall"
 	"todo/internal/app"
@@ -23,8 +24,10 @@ import (
 // @in header
 // @name Authorization
 func main() {
-	if err := godotenv.Load(); err != nil {
-		panic(err)
+	if env := os.Getenv("ENV"); env == "" || env == "local" {
+		if err := godotenv.Load(); err != nil {
+			panic(err)
+		}
 	}
 	cfg, err := config.GetConfig()
 	if err != nil {

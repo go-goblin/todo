@@ -21,6 +21,17 @@ const docTemplate = `{
                     "\"auth\""
                 ],
                 "summary": "Аутентификация пользователя",
+                "parameters": [
+                    {
+                        "description": "Reserve Request Body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.SignInRequest"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -55,6 +66,17 @@ const docTemplate = `{
                     "\"auth\""
                 ],
                 "summary": "Регистрирует пользователя с помощью логина и пароля",
+                "parameters": [
+                    {
+                        "description": "Reserve Request Body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.SignInRequest"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -86,7 +108,7 @@ const docTemplate = `{
         "/tasks": {
             "get": {
                 "tags": [
-                    "\"todo\""
+                    "\"to do\""
                 ],
                 "summary": "Получить задачи",
                 "responses": {
@@ -118,9 +140,20 @@ const docTemplate = `{
             },
             "post": {
                 "tags": [
-                    "\"todo\""
+                    "\"to do\""
                 ],
                 "summary": "Создает задачу для пользователя",
+                "parameters": [
+                    {
+                        "description": "Reserve Request Body",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/handler.CreateTaskRequest"
+                        }
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
@@ -152,7 +185,7 @@ const docTemplate = `{
         "/tasks/{id}": {
             "get": {
                 "tags": [
-                    "\"todo\""
+                    "\"to do\""
                 ],
                 "summary": "Получить задачи по идентификатору",
                 "responses": {
@@ -184,7 +217,7 @@ const docTemplate = `{
             },
             "put": {
                 "tags": [
-                    "\"todo\""
+                    "\"to do\""
                 ],
                 "summary": "Удаляет задачу для пользователя",
                 "responses": {
@@ -217,6 +250,59 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "handler.CreateTaskRequest": {
+            "type": "object",
+            "required": [
+                "description",
+                "status",
+                "title"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.SignInRequest": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "password": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "handler.UpdateTaskRequest": {
+            "type": "object",
+            "required": [
+                "description",
+                "status",
+                "title"
+            ],
+            "properties": {
+                "description": {
+                    "type": "string"
+                },
+                "status": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
         "models.AuthData": {
             "type": "object",
             "properties": {
@@ -357,7 +443,7 @@ var SwaggerInfo = &swag.Spec{
 	Host:             "",
 	BasePath:         "/",
 	Schemes:          []string{},
-	Title:            "Todo API",
+	Title:            "To Do API",
 	Description:      "API для управления задачами",
 	InfoInstanceName: "swagger",
 	SwaggerTemplate:  docTemplate,

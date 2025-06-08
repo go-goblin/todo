@@ -1,5 +1,41 @@
 basePath: /
 definitions:
+  handler.CreateTaskRequest:
+    properties:
+      description:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - status
+    - title
+    type: object
+  handler.SignInRequest:
+    properties:
+      password:
+        type: string
+      username:
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  handler.UpdateTaskRequest:
+    properties:
+      description:
+        type: string
+      status:
+        type: string
+      title:
+        type: string
+    required:
+    - description
+    - status
+    - title
+    type: object
   models.AuthData:
     properties:
       access_token:
@@ -82,11 +118,18 @@ definitions:
 info:
   contact: {}
   description: API для управления задачами
-  title: Todo API
+  title: To Do API
   version: "1.0"
 paths:
   /login:
     post:
+      parameters:
+      - description: Reserve Request Body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.SignInRequest'
       responses:
         "200":
           description: OK
@@ -109,6 +152,13 @@ paths:
       - '"auth"'
   /sign-in:
     post:
+      parameters:
+      - description: Reserve Request Body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.SignInRequest'
       responses:
         "200":
           description: OK
@@ -150,8 +200,15 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Получить задачи
       tags:
-      - '"todo"'
+      - '"to do"'
     post:
+      parameters:
+      - description: Reserve Request Body
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/handler.CreateTaskRequest'
       responses:
         "200":
           description: OK
@@ -171,7 +228,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Создает задачу для пользователя
       tags:
-      - '"todo"'
+      - '"to do"'
   /tasks/{id}:
     get:
       responses:
@@ -193,7 +250,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Получить задачи по идентификатору
       tags:
-      - '"todo"'
+      - '"to do"'
     put:
       responses:
         "200":
@@ -214,7 +271,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Удаляет задачу для пользователя
       tags:
-      - '"todo"'
+      - '"to do"'
 securityDefinitions:
   BearerAuth:
     in: header

@@ -29,7 +29,7 @@ func (h *Handler) GetRouter() chi.Router {
 	})
 
 	r.Get("/docs/*", httpSwagger.Handler(
-		httpSwagger.URL("http://localhost:8080/docs/swagger.json"),
+		httpSwagger.URL("/docs/swagger.json"),
 	))
 
 	// Обслуживание статического файла swagger.json.

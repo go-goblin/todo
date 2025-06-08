@@ -11,6 +11,7 @@ import (
 // PostSignIn Регистрация
 // @Summary Регистрирует пользователя с помощью логина и пароля
 // @Tags "auth"
+// @Param request body handler.SignInRequest true "Reserve Request Body"
 // @Success 200 {object} models.AuthResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse
@@ -38,6 +39,7 @@ func (h *Handler) PostSignIn(w http.ResponseWriter, r *http.Request) {
 // PostLogin аутентифицирует пользователя по логину и паролю
 // @Summary Аутентификация пользователя
 // @Tags "auth"
+// @Param request body handler.SignInRequest true "Reserve Request Body"
 // @Success 200 {object} models.AuthResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse

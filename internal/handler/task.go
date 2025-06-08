@@ -71,6 +71,7 @@ func (h *Handler) GetTaskByID(w http.ResponseWriter, r *http.Request) {
 // PostCreateTask Создать задачу
 // @Summary Создает задачу для пользователя
 // @Tags "to do"
+// @Param request body handler.CreateTaskRequest true "Reserve Request Body"
 // @Success 200 {object} models.CreateTaskResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse
@@ -103,7 +104,9 @@ func (h *Handler) PostCreateTask(w http.ResponseWriter, r *http.Request) {
 
 // PutUpdateTask Обновить задачу по идентификатору
 // @Summary Обновляет задачу для пользователя
-// @Tags "to do"
+// @Tags to do
+// @Param id path int true "ID задачи"
+// @Param request body handler.UpdateTaskRequest true "Reserve Request Body"
 // @Success 200 {object} models.OperationResultResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse

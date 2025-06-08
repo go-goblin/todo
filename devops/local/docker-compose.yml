@@ -1,0 +1,59 @@
+
+services:
+  app:
+    build:
+      context: ../../
+      dockerfile: devops/build/Dockerfile
+    container_name: go-app
+    depends_on:
+      - postgres
+      - migrate
+    ports:
+      - "8080:8080"
+    environment:
+      ENV: docker
+      LOG_LEVEL: info
+      POSTGRES_ENDPOINT: postgres
+      POSTGRES_DATABASE: todo
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: postgres
+      SIGNING_KEY: LKGFDJLKFSD
+    restart: unless-stopped
+    networks:
+      - my_network
+
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: todo
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - my_network
+
+  migrate:
+    build:
+      context: ../../
+      dockerfile: devops/build/migration.Dockerfile
+    container_name: goose-migrate
+    depends_on:
+      - postgres
+    environment:
+      GOOSE_DRIVER: postgres
+      GOOSE_DBSTRING: host=postgres port=5432 user=postgres password=postgres dbname=todo sslmode=disable
+    entrypoint: ["goose", "-dir", "./migrations", "up"]
+    networks:
+      - my_network
+
+volumes:
+  pgdata:
+
+networks:
+  my_network:
+    driver: bridge
