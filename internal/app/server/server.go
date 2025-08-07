@@ -12,7 +12,7 @@ type HTTPServer struct {
 	server *http.Server
 }
 
-func New(deps *dependencies.Dependencies) (*HTTPServer, error) {
+func New(deps *dependencies.Dependencies) *HTTPServer {
 	h := handler.New(deps)
 	r := h.GetRouter()
 	server := &http.Server{
@@ -25,7 +25,7 @@ func New(deps *dependencies.Dependencies) (*HTTPServer, error) {
 	}
 	return &HTTPServer{
 		server: server,
-	}, nil
+	}
 }
 
 func (s *HTTPServer) Run() error {
