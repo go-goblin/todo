@@ -60,7 +60,7 @@ const docTemplate = `{
                 }
             }
         },
-        "/sign-in": {
+        "/signup": {
             "post": {
                 "tags": [
                     "\"auth\""
@@ -108,7 +108,7 @@ const docTemplate = `{
         "/tasks": {
             "get": {
                 "tags": [
-                    "\"to do\""
+                    "\"todo\""
                 ],
                 "summary": "Получить задачи",
                 "responses": {
@@ -140,7 +140,7 @@ const docTemplate = `{
             },
             "post": {
                 "tags": [
-                    "\"to do\""
+                    "\"todo\""
                 ],
                 "summary": "Создает задачу для пользователя",
                 "parameters": [
@@ -185,7 +185,7 @@ const docTemplate = `{
         "/tasks/{id}": {
             "get": {
                 "tags": [
-                    "\"to do\""
+                    "\"todo\""
                 ],
                 "summary": "Получить задачи по идентификатору",
                 "responses": {
@@ -217,7 +217,7 @@ const docTemplate = `{
             },
             "put": {
                 "tags": [
-                    "\"to do\""
+                    "\"todo\""
                 ],
                 "summary": "Удаляет задачу для пользователя",
                 "responses": {

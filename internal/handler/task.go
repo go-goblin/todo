@@ -14,7 +14,7 @@ import (
 
 // GetAllTasks Возвращает все задачи пользователя
 // @Summary Получить задачи
-// @Tags "to do"
+// @Tags "todo"
 // @Success 200 {object} models.TaskListResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse
@@ -37,7 +37,7 @@ func (h *Handler) GetAllTasks(w http.ResponseWriter, r *http.Request) {
 
 // GetTaskByID Возвращает задачу пользователя по идентификатору
 // @Summary Получить задачи по идентификатору
-// @Tags "to do"
+// @Tags "todo"
 // @Success 200 {object} models.TaskResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse
@@ -70,7 +70,7 @@ func (h *Handler) GetTaskByID(w http.ResponseWriter, r *http.Request) {
 
 // PostCreateTask Создать задачу
 // @Summary Создает задачу для пользователя
-// @Tags "to do"
+// @Tags "todo"
 // @Param request body handler.CreateTaskRequest true "Reserve Request Body"
 // @Success 200 {object} models.CreateTaskResponse
 // @Failure 400 {object} models.BaseResponse
@@ -150,7 +150,7 @@ func (h *Handler) PutUpdateTask(w http.ResponseWriter, r *http.Request) {
 
 // DelDeleteTask Удалить задачу по идентификатору
 // @Summary Удаляет задачу для пользователя
-// @Tags "to do"
+// @Tags "todo"
 // @Success 200 {object} models.OperationResultResponse
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse

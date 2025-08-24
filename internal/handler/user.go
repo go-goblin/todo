@@ -16,7 +16,7 @@ import (
 // @Failure 400 {object} models.BaseResponse
 // @Failure 401 {object} models.BaseResponse
 // @Failure 404 {object} models.BaseResponse
-// @Router /sign-in [post]
+// @Router /signup [post]
 func (h *Handler) PostSignIn(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	ctx := r.Context()

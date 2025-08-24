@@ -150,7 +150,7 @@ paths:
       summary: Аутентификация пользователя
       tags:
       - '"auth"'
-  /sign-in:
+  /signup:
     post:
       parameters:
       - description: Reserve Request Body
@@ -200,7 +200,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Получить задачи
       tags:
-      - '"to do"'
+      - '"todo"'
     post:
       parameters:
       - description: Reserve Request Body
@@ -228,7 +228,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Создает задачу для пользователя
       tags:
-      - '"to do"'
+      - '"todo"'
   /tasks/{id}:
     get:
       responses:
@@ -250,7 +250,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Получить задачи по идентификатору
       tags:
-      - '"to do"'
+      - '"todo"'
     put:
       responses:
         "200":
@@ -271,7 +271,7 @@ paths:
             $ref: '#/definitions/models.BaseResponse'
       summary: Удаляет задачу для пользователя
       tags:
-      - '"to do"'
+      - '"todo"'
 securityDefinitions:
   BearerAuth:
     in: header

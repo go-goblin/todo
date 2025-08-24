@@ -38,7 +38,7 @@ func (h *Handler) GetRouter() chi.Router {
 	})
 
 	r.Route("/", func(r chi.Router) {
-		r.Post("/sign-in", h.PostSignIn)
+		r.Post("/signup", h.PostSignIn)
 		r.Post("/login", h.PostLogin)
 	})
 
