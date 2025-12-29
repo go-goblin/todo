@@ -4,8 +4,8 @@ import (
 	"context"
 	"net/http"
 	"time"
-	"todo/internal/dependencies"
-	"todo/internal/handler"
+	"url-stortener/internal/dependencies"
+	"url-stortener/internal/handler"
 )
 
 type HTTPServer struct {
@@ -16,7 +16,7 @@ func New(deps *dependencies.Dependencies) *HTTPServer {
 	h := handler.New(deps)
 	r := h.GetRouter()
 	server := &http.Server{
-		Addr:              deps.Config.HTTPListenAddr,
+		Addr:              ":8080",
 		ReadHeaderTimeout: 5 * time.Second,
 		ReadTimeout:       10 * time.Second,
 		WriteTimeout:      10 * time.Second,

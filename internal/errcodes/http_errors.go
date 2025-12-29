@@ -3,7 +3,7 @@ package errcodes
 import (
 	"github.com/go-chi/render"
 	"net/http"
-	"todo/internal/models"
+	"url-stortener/internal/models"
 )
 
 func SendErrorJSON(w http.ResponseWriter, r *http.Request, httpCode int, err error) {

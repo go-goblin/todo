@@ -1,34 +1,15 @@
 package dependencies
 
 import (
-	"todo/internal/config"
-	"todo/internal/repository"
-	"todo/internal/service"
-	"todo/pkg/auth"
+	"url-stortener/internal/service"
 )
 
 type Dependencies struct {
-	Config         *config.Config
-	UserRepository repository.UserRepository
-	TaskRepository repository.TaskRepository
-	UserService    service.UserService
-	TaskService    service.TaskService
-	TokenManager   auth.TokenManager
+	UrlShortenerService service.UrlShortenerService
 }
 
-func New(
-	config *config.Config,
-	userRepository repository.UserRepository,
-	taskRepository repository.TaskRepository,
-	userService service.UserService,
-	taskService service.TaskService,
-	manager auth.TokenManager) *Dependencies {
+func New(urlShortenerService service.UrlShortenerService) *Dependencies {
 	return &Dependencies{
-		Config:         config,
-		UserRepository: userRepository,
-		TaskRepository: taskRepository,
-		UserService:    userService,
-		TaskService:    taskService,
-		TokenManager:   manager,
+		UrlShortenerService: urlShortenerService,
 	}
 }
